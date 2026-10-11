@@ -2,7 +2,11 @@
 
 Status: requirements discovery; no implementation yet.
 
+The 48-hour references below describe the baseline, not a fixed constant. Operations Manager/Leader controls the confirmed waiting/claim modes; System Administrator is a separate role. See `SHARED-REQUEST-WORKFLOW.md`.
+
 ## Confirmed
+
+Latest 2026-10-11 clarification: Operations Manager/Leader controls the global wait and submission-blocking versus early-submission/claim-blocking mode, as described in `SHARED-REQUEST-WORKFLOW.md`. Recalculate waiting requests on policy changes. Cutover success and Operations confirmation are one event/time; hours are continuous, including holidays. The System Administrator is a separate role. This supersedes the earlier open timestamp and enable/disable interpretation. Manual checks and future integration are covered in `MANUAL-CHECKS-AND-FUTURE-INTEGRATION.md`.
 
 - After successful Cutover, the Project Commissioning Specialist can request Handover once 48 hours have passed.
 - Use the same router/rollout record and preserve every previous stage.

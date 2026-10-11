@@ -4,6 +4,10 @@ Status: requirements updated with Operations-only execution recording. Proposed 
 
 ## Entry condition
 
+Latest clarification: the Cutover plan is Project's primary plan and may precede Temperature/ATP. Track missing readiness against that plan. ATP approval has an Operations-Leader-configured validity interval; expiry requires re-confirmation and notification to both Project and Operations Leaders. ATP approved without a plan is an Operations concern. See `ATP-VALIDITY-AND-CUTOVER-READINESS.md`; blocking Cutover start with expired ATP, automatic Operations renewal tasks and configurable advance readiness warnings are confirmed.
+
+2026-10-11 clarification: successful Cutover completion and Operations confirmation of success are one event/time, used as the Handover timing anchor. Cutover is excluded from the shared QA/Temperature/ATP/Handover timing modes. Plan-readiness, ATP-validity and missing-Handover-request reminders are recorded in `SHARED-REQUEST-WORKFLOW.md`. Initial checks remain manual; future integration is described in `MANUAL-CHECKS-AND-FUTURE-INTEGRATION.md`.
+
 Actual Cutover requires full or conditional ATP approval by Second-Line Operations. The schedule displays QA, Temperature and ATP states, with conditional approval visibly distinct. Advance planning of pending routers with execution blocked is accepted. Scheduling does not grant execution permission.
 
 ## Scheduling model
@@ -32,7 +36,7 @@ Recommended router-row fields:
 
 ## Proposed scheduling controls
 
-1. Publishing validates readiness again. Operations must recheck current ATP approval when authorizing execution; a schedule snapshot cannot replace current approval. Approval expiry rules have not been specified.
+1. Publishing validates readiness again. Operations must recheck current ATP approval when authorizing execution; a schedule snapshot cannot replace current approval. ATP expiry and Operations Leader configuration are confirmed; the confirmed start gate, equal validity of conditional ATP, recalculation of unexecuted approvals and remaining expiry edge cases are described in `ATP-VALIDITY-AND-CUTOVER-READINESS.md`.
 2. The schedule shows readiness badges for QA, Temperature, and ATP and provides the blocking reason.
 3. Weekly planning may leave the Project executor unassigned. Operations can record or change the actual executor, including last-minute changes, with full attribution and history. Proposal: require actual executor identity before execution is recorded as started.
 4. Operations participant remains variable and is recorded when the row is accepted or started.
@@ -109,5 +113,5 @@ Automation must not automatically approve Cutover unless an explicitly approved 
 6. Should actual executor be mandatory at start or before final result? Operations can change that person with history.
 7. Can one Operations specialist support multiple rows in the same window?
 8. Which failures require rollback, and who authorizes it?
-9. Which authoritative success timestamp starts Handover eligibility? Successful Cutover plus 48 hours is confirmed; Operations approval timestamp is the proposed anchor.
+9. Resolved: successful Cutover completion and Operations confirmation share one event/time, which starts the configurable Handover interval.
 10. What information will the future Cutover automation consume and return?

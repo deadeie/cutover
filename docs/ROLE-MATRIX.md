@@ -2,6 +2,10 @@
 
 Status: requirements discovery; no permission implementation yet.
 
+Latest authority corrections: Operations Manager defines/approves new OM ranges with mandatory RSG-group linkage at creation. Operations Leader configures ATP validity duration. ATP expiry informs both Project and Operations Leaders. This supersedes the earlier Project-Leader-configured ATP-to-plan reminder interpretation below. Cutover-plan readiness is Project's concern; approved ATP without a plan is Operations' concern.
+
+Latest 2026-10-11 clarification supersedes conflicting assignments below: System Administrator is a separate role from Operations Manager. Operations Manager AND Operations Leader may configure system-wide inter-stage waits and submission/claim modes for QA, Temperature, ATP and Handover. Project Manager configures reminders for Cutover without a Handover request; Operations Leader configures ATP validity; expiry creates Operations renewal work and informs both leaders. The earlier Project-owned ATP-to-plan deadline is superseded. QA and Temperature inherit the Operations claim/review approach. Submitted tasks concern Operations; returned corrections concern Project. Leadership reminders are a filterable consolidated list. Super Admin exception powers are deferred, not granted. See `SHARED-REQUEST-WORKFLOW.md`.
+
 | Group | Roles |
 |---|---|
 | Design | Manager; Specialist |

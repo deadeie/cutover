@@ -2,7 +2,13 @@
 
 This document supersedes the incomplete Temperature draft where they differ. Status: discovery, not implemented.
 
+Time intervals are configurable; System Administrator is distinct from Operations Manager/Leader. Workflow timing authority is recorded in `SHARED-REQUEST-WORKFLOW.md`. The 48-hour observation references are the recorded baseline; effects of policy changes on existing/repeated observation runs remain open. See `ADMIN-POLICIES-AND-DEPLOYMENT.md`.
+
 ## Confirmed flow
+
+Confirmed follow-up: there is no waiting interval between QA approval and Temperature submission or claim. Both are immediately permitted after QA approval. The configurable observation period starts at Temperature submission; Operations can work during it, but final approval is blocked until it completes. Existing correction/re-observation rules remain. This resolves the earlier two-clock question below; there is no additional QA-to-Temperature delay.
+
+Latest 2026-10-11 clarification: extend the ATP/Handover queue, claim/review and acknowledged-continuation approach to Temperature. See `SHARED-REQUEST-WORKFLOW.md` for global submission/claim modes. There is no QA-to-Temperature interval; only the submission-based observation period applies before Temperature approval. Initial-release checks remain manual outside the system; see `MANUAL-CHECKS-AND-FUTURE-INTEGRATION.md`.
 
 1. Project Commissioning Specialist submits for the same rollout record used in QA.
 2. Full router name, OM IP, and hardware model are supplied at this stage. Preserve the QA alias and stable internal identity.
@@ -11,6 +17,8 @@ This document supersedes the incomplete Temperature draft where they differ. Sta
 5. Every action supports its own separately retrievable comment. Do not overwrite prior submission/review comments on resubmission.
 
 ## Province and model configuration
+
+Latest range clarification: block submission if the OM IP is outside all allowed ranges of the selected province. Each RSG A/B pair shares one range with its subordinate ASG/CSG routers. Ranges are unique/non-overlapping and the user states only the last octet varies. See `OM-RANGES-AND-RSG-GROUPS.md` for confirmed facts and the approved separate range-registration flow for new RSGs. Operations Manager defines/approves the range, and group linkage is mandatory from the outset; A/B membership in that same group is confirmed.
 
 Province administration stores both naming-standard codes and multiple OM address ranges per province. Ranges are generally /24; do not hard-code /24 as the only allowed prefix. Validate the router OM IP against any configured range belonging to its province. Router hardware is selected from the administrator-managed model catalog.
 

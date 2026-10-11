@@ -2,6 +2,41 @@
 
 ## Unreleased
 
+### Confirmed ATP renewal and RSG membership checkpoint
+
+- Confirmed blocking Cutover start with expired ATP, automatic Operations renewal tasks, equal validity duration for conditional ATP and recalculation of unexecuted approvals after duration changes.
+- Approved configurable advance reminders for incomplete/invalid Temperature or ATP ahead of planned Cutover.
+- Confirmed first/second RSG A/B membership in a shared range group as recorded relationships only.
+- Consolidated the continuation checkpoint for publication at the user's request; application implementation remains out of scope.
+
+- Corrected planning model: Cutover plans drive Project readiness; replaced Project-owned ATP-to-plan deadline with Operations-Leader-configured ATP validity and dual-leader expiry notifications. Documented renewal/execution-gate proposals separately.
+- Confirmed Operations Manager approval of new-range requests and required group ownership at initial range definition.
+- Confirmed normal site-code leading zeroes as well as X-pattern leading zeroes; X remains a distinct literal letter.
+
+- Confirmed normal RSG examples, leading zeroes for X site codes, explicit first/second QA plane confirmation and ASG/CSG topology distinction.
+- Confirmed one shared range per RSG pair, non-overlapping province ranges and rejection of out-of-province OM IP; documented a proposed separate new-range registration flow.
+- Approved additional management reminders and removal from the active list only when the expected action is performed, retaining history.
+
+- Confirmed immediate QA submission/claim after installation and immediate Temperature submission/claim after QA approval; retained configurable observation before Temperature approval.
+- Captured warning/confirmation for a second router at an existing site and separate simultaneous QA requests with A/B identification on the second request; final names remain assigned at Temperature.
+
+- Confirmed across QA, Temperature, ATP and Handover: inter-stage interval changes recalculate unclaimed waiting requests; already claimed reviews continue under the eligibility rule at claim time without being paused by the new interval.
+
+### 2026-10-11 — Shared requests, ownership and naming
+
+- Extended claim/review requirements to QA and Temperature, with per-stage Operations queues and correction responsibility returning to Project.
+- Confirmed system-wide Operations Manager/Leader timing modes, recalculation of waiting requests, continuous hours and unified Cutover success time; separated System Administrator role.
+- Confirmed consolidated leadership reminder lists and Project-configured missing-plan/missing-Handover reminders; marked further reminders as proposals.
+- Clarified QA site-code identity, shared-site router examples, TH suffix/topology interpretation and TH-only OM-range mapping; retained contradictory RSG examples as unresolved.
+- Confirmed QA rejection means correction and initial release records external manual checks; future evidence/checklist/automation extensions remain requirements only.
+
+### 2026-10-11 — Deployment and administrator policy clarification
+
+- Confirmed RHEL 8, Docker containers and image delivery; withdrew earlier package-selection restrictions while retaining offline runtime requirements.
+- Confirmed administrator-controlled intervals and Handover submission enablement; recorded open questions about scope, wait waivers and existing requests.
+- Confirmed personal reminder routing with awareness for relevant section leaders/managers.
+- Updated the continuation checkpoint and local Git status; naming/checklist discovery continues before UX and technical design.
+
 ### Conditional decisions and continuation checkpoint
 
 - Confirmed conditional ATP permits Cutover and conditional Handover completes delivery, releasing Project responsibility.

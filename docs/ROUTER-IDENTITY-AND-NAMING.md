@@ -1,5 +1,23 @@
 # Router Identity and Naming Rules
 
+## Latest process-owner clarification — 2026-10-11
+
+This section supersedes conflicting earlier examples and open questions below. The RSG digit-count conflict is now resolved; remaining naming decisions are explicitly listed.
+
+- The temporary QA name is the site code (the suffix of the eventual full router name), not a separately invented alias.
+- Normal site code: two letters plus four digits. Exception: two letters followed by X and three digits. Leading zeroes are allowed in both normal codes (GL0012) and X codes (GLX012). X is a literal letter denoting the exception; it is not zero and must never be replaced by or equated with zero.
+- Site codes uniquely identify sites; multiple routers in the same center may share that site's code. A site code alone therefore cannot uniquely identify a router/rollout record. Retain a separate immutable rollout ID.
+- Confirmed same-site QA flow: if a router already exists for the site, warn and allow Project to explicitly identify the new record as a second router in that center. Its different full name is supplied at Temperature. For simultaneous installation, there are two separate QA requests; ask the person submitting the second whether it is A or B. Project already knows whether two routers are planned. Do not silently merge records or treat a correction as a new router. Confirmed follow-up: when the second request identifies its plane, explicitly confirm the first request's plane as well; do not infer it silently. Same-site ASG/CSG can be identified by topology at QA rather than requiring A/B.
+- Same-site routers may differ by final A/B letter in the first name segment, or by topology letter (second character). User examples: `BAYUVFA_YU1111` / `BAYUVFB_YU1111`, and `BARSTGU_HJ1111` / `BCRSTGU_HJ1111`.
+- Latest full RSG examples: `BRGJXA_GLNNNN` and `BRGJXB_GLNNNN`, with four digits for both planes. The user confirmed the earlier conflicting examples were typos. Use `BRGJXA_GL1234` and `BRGJXB_GL1234` as the confirmed normal examples; the X exception remains two letters + X + three digits.
+- For TH, identify province from the suffix `TH`, not from the first segment. The second character identifies RSG/ASG/CSG (`R`/`A`/`C`). Center letters do not encode a province.
+- TH RSG examples: `BRJHFA_THNNNN`, `BRJHFB_THNNNN`, `BRUITA_THNNNN`, `BRTGYB_THNNNN`.
+- TH CSG example: `BCOPIA_THNNNN`; TH ASG example: `BAIMKG_THNNNN`. The process owner states the first segment has six letters for TH ASG/CSG; do not infer an A/B plane from their final character without confirmation.
+- Confirmed range facts: each RSG A/B pair has one range shared with subordinate ASGs/CSGs; a province may have several pairs. Province allowed ranges are currently administrator-defined, unique and non-overlapping. Out-of-province-range OM IP blocks submission. The user approved mandatory pair/group ownership from initial range definition and Operations Manager approval of new-range requests; see `OM-RANGES-AND-RSG-GROUPS.md`. A/B group membership is confirmed: the first router occupies its plane position and the second completes the same group. All-province grouping is proposed; TH-specific name parsing remains distinct.
+- Full canonical-name uniqueness and authority to correct a canonical name remain to be specified.
+
+Follow-up priorities: full-name uniqueness/name-correction authority and all-province grouping scope. Normal and X-pattern leading zeroes and Operations Manager range authority are resolved. Detailed checklists are deferred under `MANUAL-CHECKS-AND-FUTURE-INTEGRATION.md`.
+
 ## 1. Purpose
 
 The rollout record must keep one continuous identity from Installation QA through Handover. The identifier begins as a temporary QA alias because the final router name is not known at Stage 1. At Stage 2, the final name is added to the same rollout record and becomes the current canonical name.

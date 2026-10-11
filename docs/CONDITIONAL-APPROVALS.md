@@ -2,6 +2,8 @@
 
 ## Confirmed requirements
 
+Reminder intervals are configurable. Reminders target the responsible person and appear in the relevant leadership consolidated filterable list. Conditional follow-up recipient, configuration authority, recurrence and condition-resolution authority remain open; see `ADMIN-POLICIES-AND-DEPLOYMENT.md`.
+
 Second-Line Operations may approve ATP or Handover conditionally in exceptional situations. These decisions must be visibly distinct, attributable and independently referenceable.
 
 ## Proposed representation
@@ -13,6 +15,8 @@ Second-Line Operations may approve ATP or Handover conditionally in exceptional 
 - Resolving a condition creates a new event; preserve the original conditional decision and its conditions.
 
 ## Confirmed progression and ownership
+
+Latest confirmation: conditional ATP uses the same validity duration as full ATP. Expiry before Cutover creates an Operations renewal task, blocks Cutover start and informs both leaders. Duration changes recalculate unexecuted approvals; keep conditions and historical decisions. See `ATP-VALIDITY-AND-CUTOVER-READINESS.md`.
 
 - Conditional ATP permits Cutover while retaining its conditions and distinct status.
 - Conditional Handover completes handover and removes responsibility from the Project Team. A different team handles remaining conditions outside this system; do not create roles or a task workflow for that external team.

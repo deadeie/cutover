@@ -2,6 +2,10 @@
 
 ## Purpose
 
+Confirmed follow-up: QA is immediately submit/claim eligible once installation completion is reported; no prior-stage delay is required. If the site code already has a recorded router, warn the submitter and allow explicit confirmation that this is a second router at the same center. If both are being installed together, create two separate QA requests and ask the second submitter whether that router is A or B. Project knows whether two routers are planned. Full names are assigned separately at Temperature. Confirmed follow-up: explicitly confirm the first simultaneous request's plane when assigning A/B to the second; do not infer it silently. Same-site ASG/CSG may be distinguished by topology selected at QA. Existing correction cycles remain on the original request rather than creating an additional router.
+
+Latest clarification (2026-10-11): QA uses the shared Operations queue, claim/review and acknowledged-continuation workflow in `SHARED-REQUEST-WORKFLOW.md`. QA alias is the site code, potentially shared by multiple routers at the same site; the confirmed per-router plane/topology distinction is described above. Operations coordinates a checklist with an external provincial contact and Second-Line records the outcome. Photo/checklist features are deferred; no mandatory in-app evidence upload is required. See `MANUAL-CHECKS-AND-FUTURE-INTEGRATION.md` and the latest naming clarification.
+
 Allow the Project Team's Installation Specialist to report that a router has been installed and request Network Operations review.
 
 ## Actors
@@ -45,7 +49,7 @@ Draft
   → In review
   → Approved → Stage 2 becomes eligible
   → Changes requested → Draft/Resubmitted
-  → Rejected → terminal unless reopened by policy
+  → Rejected / returned for correction → corrected resubmission on the same item
   → Cancelled → terminal
 ```
 
@@ -76,8 +80,8 @@ The reviewer cannot change the submitter's data silently. Any correction uses a 
 
 ## Pending decisions
 
-- Exact QA checklist and mandatory evidence.
-- QA alias digit count, leading-zero policy, and uniqueness scope.
+- Structured checklists/photos are future features; no mandatory in-app evidence upload for the initial release.
+- QA site-code format, leading zeroes and shared-site identity are confirmed in `ROUTER-IDENTITY-AND-NAMING.md`.
 - Reassignment rules; the normal reviewer is confirmed as Second-Line Operations.
-- Whether rejection is terminal or can be reopened.
-- Minimum delay from Stage 1 approval to Stage 2 submission.
+- Rejection returns the request for correction (confirmed); no terminal rejection inferred.
+- Resolved: no delay from QA approval to Temperature submission/claim; observation remains a separate Temperature requirement.

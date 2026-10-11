@@ -9,7 +9,8 @@ Build a modular system for managing and recording the router-onboarding process.
 - Python 3.11 application baseline.
 - PostgreSQL persistence.
 - Modular monolith architecture with explicit module boundaries.
-- Development on Windows; target execution on an offline Linux VM.
+- Development on Windows; target execution on RHEL 8 using Docker containers, with images delivered for offline deployment.
+- Package-selection restrictions are withdrawn: suitable dependencies may be included in the images. This does not remove the offline runtime constraint. See `docs/ADMIN-POLICIES-AND-DEPLOYMENT.md` for confirmed controls and open questions.
 - No runtime dependency on public package registries, cloud services, CDNs, or internet access.
 - Every capability must include requirements, acceptance criteria, tests, versioned documentation, and a change record.
 - Secrets must never be committed to Git or included in the transfer bundle.

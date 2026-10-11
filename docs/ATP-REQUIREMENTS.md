@@ -4,6 +4,10 @@ Status: confirmed process requirements plus explicitly marked design proposals. 
 
 ## Confirmed workflow
 
+Latest clarification: ATP has a validity duration configured by Operations Leader. On expiry before Cutover, ATP is no longer acceptable and needs re-confirmation; notify both Project and Operations Leaders. Cutover planning generally precedes Temperature/ATP work. The former Project-owned ATP-to-plan deadline is superseded. See `ATP-VALIDITY-AND-CUTOVER-READINESS.md` for confirmed automatic Operations renewal tasks, blocking Cutover start with expired ATP, equal validity of conditional ATP, recalculation of existing unexecuted approvals and the remaining expiry edge cases.
+
+Latest 2026-10-11 clarification: shared queue, claim, timing and reminder requirements are in `SHARED-REQUEST-WORKFLOW.md`. Initial release records manual Operations checks; existing external automation integration is deferred, with extensibility retained as described in `MANUAL-CHECKS-AND-FUTURE-INTEGRATION.md`.
+
 1. Project Commissioning Specialist submits ATP for the existing router rollout record after Temperature acceptance.
 2. The request appears in a queue available to Second-Line Network Operations.
 3. One Second-Line specialist claims the request. Others can see who owns it and should respect claim precedence during normal operation.
@@ -26,6 +30,8 @@ Status: confirmed process requirements plus explicitly marked design proposals. 
 - Distinguish the Operations specialist who SENT findings/returned the request from the Project specialist who SUBMITTED fixes. Neither actor is inferred from the original claimant. Proposed resubmission routing: highlight the latest correction-request sender, while keeping acknowledged continuation available to other Second-Line staff. Notification routing remains to be confirmed.
 
 ## Claim response thresholds
+
+2026-10-11 clarification: reminders requiring a person's attention target that person, and the relevant section's leader/manager must be aware of all such reminders. This supersedes the narrower proposal below to involve management only at the higher warning. Individual delivery versus consolidated visibility and routing after continuation remain open; see `ADMIN-POLICIES-AND-DEPLOYMENT.md`.
 
 Confirmed: duration is measured after claim; management configures a lower warning threshold and a higher serious-warning threshold. Notify the claimant at each threshold. If another specialist has taken over, notify the active worker as well.
 
