@@ -4,7 +4,7 @@
 
 Phase 1: process discovery and confirmed requirements. No application, database migration or container has been implemented or runtime-tested. Read docs/RESUME-HERE.md first; detailed current requirements under docs/ supersede historical proposals and root-level duplicate foundation documents.
 
-UX Phase 2 has started with an initial contract in `docs/UX-PHASE-2-FOUNDATION.md`; wireframes and implementation have not started.
+UX Phase 2 has an initial contract, a Persian weekly-plan wireframe and a standalone desktop demo at `prototypes/demo/index.html`. The demo uses fictitious local data and is not the application implementation. No database migration, backend or container has been implemented or runtime-tested.
 
 ## Confirmed checkpoint
 
@@ -15,6 +15,7 @@ UX Phase 2 has started with an initial contract in `docs/UX-PHASE-2-FOUNDATION.m
 - Inter-stage policy: Operations Manager/Leader controls global submission-blocking versus early-submission/claim-blocking modes. Waiting requests recalculate on changes; already claimed requests retain their inter-stage eligibility rule. Time includes holidays.
 - Cutover plan: Project plans first and pursues readiness. Only Operations records execution actions/results after start. Preserve failed attempts and actual participants. Successful completion and Operations confirmation share one event/time.
 - Cutover planning decision: Commissioning Leader creates a weekly plan; rows may have individual day/time placement inside that week. Separate daily Project plans are not used in the initial implementation.
+- The Commissioning Leader must assign a planned Cutover executor to each router before publishing the weekly plan. This assignment applies only to Cutover; QA, Temperature, ATP and Handover have separate task assignments. Operations records the actual Cutover executor and may record another person while preserving both identities and history.
 - ATP validity: Operations Leader sets duration. Expiry requires re-confirmation, blocks Cutover start and automatically creates an Operations review task. Notify Project and Operations Leaders. Conditional ATP uses the same duration. Changes recalculate approvals for routers not yet Cutover. Advance plan-readiness reminders have a configurable lead time. Validity is checked at each attempt start; expiry mid-execution does not interrupt it. Successful Cutover stops pre-Cutover renewals; failed/replanned attempts recheck. Increasing duration never revives expired ATP.
 - Handover: configurable interval after successful Cutover; conditional Handover completes transfer and releases Project while conditions remain tracked for Operations follow-up.
 - Reminders: responsible-person alerts plus filterable consolidated leadership lists. Approved management reminders resolve when the expected action is performed, retaining history; reading an alert does not resolve it.
@@ -29,6 +30,7 @@ UX Phase 2 has started with an initial contract in `docs/UX-PHASE-2-FOUNDATION.m
 ## Confirmed UX direction
 
 - Pre-QA planned items are active in the first release when they belong to the approved project scope. They can enter the weekly Cutover plan before QA, while execution remains blocked until prerequisites pass.
+- Initial desktop demo: `prototypes/demo/index.html`, with overview, personal work, weekly plan, Operations queues, router/project list, reminders, management reports and configuration views. It is for local presentation and process review only; it has no backend connection. The former Hyperspace template is not the current design direction.
 
 ## Decisions still open
 
@@ -41,4 +43,4 @@ UX Phase 2 has started with an initial contract in `docs/UX-PHASE-2-FOUNDATION.m
 
 ## Validation and publication
 
-This checkpoint contains requirements documents only. Validate document consistency and Git diffs; application tests are not applicable. Checkpoint 6283008 was published to origin/main. Later ATP-boundary confirmations and management-report proposals are local edits; use Git status to establish their publication state.
+This checkpoint contains requirements documents and a local interactive UX demo only; no production application, database or container exists. Check Git status and origin/main to establish publication state.

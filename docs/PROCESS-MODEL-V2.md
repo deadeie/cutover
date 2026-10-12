@@ -1,6 +1,6 @@
 # Process Model v2 — Project, Router, QA, Cutover, and Handover
 
-Current detail specifications: `TEMPERATURE-REQUIREMENTS.md`, `ATP-REQUIREMENTS.md`, `CUTOVER-REQUIREMENTS.md`, `ACTION-COMMENTS.md`, and `ROLE-MATRIX.md` supersede older assumptions here. Temperature observation starts on submission and lasts 48 hours; there is no additional wait before ATP. Connectivity-only corrections do not repeat the interval; temperature/CPU/fan faults require repetition. ATP has primary claims with acknowledged takeover, configurable warning thresholds, optional automation and repeated correction cycles. Cutover is scheduled by the Commissioning Leader with a named Project executor and variable Operations participant.
+Current detail specifications: `TEMPERATURE-REQUIREMENTS.md`, `ATP-REQUIREMENTS.md`, `CUTOVER-REQUIREMENTS.md`, `ACTION-COMMENTS.md`, and `ROLE-MATRIX.md` supersede older assumptions here. Temperature observation starts on submission and lasts 48 hours; there is no additional wait before ATP. Connectivity-only corrections do not repeat the interval; temperature/CPU/fan faults require repetition. ATP has primary claims with acknowledged takeover, configurable warning thresholds, optional automation and repeated correction cycles. The Commissioning Leader creates the weekly Cutover plan and assigns its planned executor per router; Operations records the actual executor, which may differ, and retains both identities. Other stages use their own assignment flow.
 
 ## 1. Scope
 

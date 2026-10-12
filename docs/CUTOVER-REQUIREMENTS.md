@@ -1,6 +1,6 @@
 # Cutover — requirements and proposed operating model
 
-Status: requirements updated with Operations-only execution recording. Proposed views and advance planning accepted by the user; detailed checklist criteria remain open.
+Status: requirements updated with Operations-only execution recording. A desktop-oriented formal UI demo is available at `prototypes/demo/index.html`; it illustrates, but does not implement, these requirements.
 
 ## Entry condition
 
@@ -34,7 +34,8 @@ Recommended router-row fields:
 - Project, province, center, hardware model, and OM IP.
 - QA, Temperature, and ATP status snapshots plus links to the current approvals.
 - Planned sequence/order and target time window.
-- Planned Project person: optional, particularly in weekly plans; the Commissioning Leader can assign on the execution day. Keep the actual executor separately identifiable.
+- Planned Cutover executor: required for every router row before the weekly plan can be published; the Commissioning Leader assigns this person. This assignment is specific to Cutover and does not assign QA, Temperature, ATP or Handover tasks.
+- Actual Cutover executor: record the person who actually performs the work. Operations may record a different person from the planned executor, with the planned assignment preserved in history.
 - Network Operations participant: selected when the work is accepted/started by First-Line or Second-Line Operations; this person may vary by row.
 - Row status: Planned, Ready, Accepted by Operations, In progress, Completed, Failed, Rolled back, Blocked, Rescheduled, Cancelled.
 - Pre-check result, execution result, post-check result, comments, and evidence.
@@ -43,7 +44,7 @@ Recommended router-row fields:
 
 1. Publishing validates readiness again. Operations must recheck current ATP approval when authorizing execution; a schedule snapshot cannot replace current approval. ATP expiry and Operations Leader configuration are confirmed; the confirmed start gate, equal validity of conditional ATP, recalculation of unexecuted approvals and remaining expiry edge cases are described in `ATP-VALIDITY-AND-CUTOVER-READINESS.md`.
 2. The schedule shows readiness badges for QA, Temperature, and ATP and provides the blocking reason.
-3. Weekly planning may leave the Project executor unassigned. Operations can record or change the actual executor, including last-minute changes, with full attribution and history. Proposal: require actual executor identity before execution is recorded as started.
+3. Every row requires a planned Cutover executor before the weekly plan is published. Operations records the actual executor at execution; this may differ from the planned person, and both values and the change actor/time/reason are retained.
 4. Operations participant remains variable and is recorded when the row is accepted or started.
 5. Moving a row to another day/time creates a new plan-row revision and preserves the previous date/time, reason, and actor. It does not create a separate daily plan.
 6. The same router cannot be active in two Cutover rows at overlapping times without an authorized exception.
@@ -60,7 +61,7 @@ Pre-check: ATP approval, identity, schedule, and dependencies
         ↓
 Operations specialist confirms readiness and records pre-check comment
         ↓
-Assigned Project person performs Cutover with Operations support
+Planned Project person (or an explicitly recorded replacement) performs Cutover with Operations support
         ↓
 Operations records execution completion based on coordination with the Project executor
         ↓
@@ -71,11 +72,12 @@ Completed / Failed / Rolled back / Blocked
 
 ## Responsibility boundary
 
-- The Commissioning Leader assigns the Project execution person.
+- The Commissioning Leader assigns a planned executor to every Cutover router in the weekly plan; plan publication is blocked until each row has an assignee.
+- This Cutover assignment does not determine who performs QA, Temperature, ATP or Handover; those tasks use their own Operations queue assignment/claim.
 - The First-Line or Second-Line Operations specialist is the variable Operations participant and confirms readiness.
 - The Project person performs the physical/operational work with Operations, but has no Cutover record action after execution begins. Coordination outside the record is not a required Project submission.
 - First-Line or Second-Line Operations records execution progress, completion and success/failure and performs initial post-checks.
-- Operations may change the Project executor at the last minute. Store old/new person, actor, timestamp, explanation, action comment and the relevant attempt. Keep planned assignment history.
+- Operations may record a different actual Cutover executor from the planned person, including a last-minute change. Store both identities, actor, timestamp, explanation, action comment and relevant attempt. Do not overwrite the planned assignment.
 - Post-checks include alarms, traffic, links, router logs and overall condition. Exact pass/fail thresholds and evidence remain open.
 - Operations records an unsuccessful outcome with explanations. After the router problem is resolved, the Commissioning Leader may add it to a new daily/weekly plan. This creates a new attempt on the same router; never overwrite the failed attempt.
 - Distinguish actual executor, recording Operations specialist and final approving Operations specialist; they need not be the same person.

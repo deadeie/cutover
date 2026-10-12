@@ -1,6 +1,6 @@
 # UX Phase 2 foundation
 
-Status: initial UX contract for review. No application code or wireframe implementation yet. This document turns the confirmed process requirements into page responsibilities and interaction rules; unresolved business decisions remain visibly marked.
+Status: UX contract plus a clickable desktop demo at `../prototypes/demo/index.html`. The demo uses fictitious local data and is not a connected application. It covers the main system destinations; unresolved business decisions remain visibly marked.
 
 ## Product navigation
 
@@ -39,6 +39,8 @@ This is the default landing page for every authenticated user.
 
 The Commissioning Leader creates one weekly plan for an assigned project. Individual rows may have a day and time window within that week; a separate daily Project plan is not created.
 
+See `UX-WEEKLY-CUTOVER-WIREFRAME.md` for the Persian text wireframe, shared board/table behavior, pre-QA identity, readiness and acceptance scenarios. Approved layout choices and proposed interactions are labeled separately.
+
 ### Plan header
 
 - Project, week, timezone, plan status and revision.
@@ -48,15 +50,15 @@ The Commissioning Leader creates one weekly plan for an assigned project. Indivi
 
 ### Row table/board
 
-Each row displays project router identity, province/site, optional topology/A-B, planned day/time, Project executor, Operations participant, QA/Temperature/ATP badges, ATP valid-until and readiness blocker.
+Each row displays project router identity, province/site, optional topology/A-B, planned day/time, planned Cutover executor, Operations participant, QA/Temperature/ATP badges, ATP valid-until and readiness blocker. The Commissioning Leader assigns a planned executor to every router before publishing; this assignment is only for Cutover. QA, Temperature, ATP and Handover responsibility follows its independent task assignment/claim flow. Operations records the actual Cutover executor and may record a different person while retaining the planned assignment.
 
 The leader selects existing project router records. A pre-QA planned item may be selected only if the approved project-scope workflow supports it; adding a new router outside project scope requires separate approval. Do not create duplicate router records when QA or the canonical name is later recorded.
 
 ### Actions
 
 - Add from project router list.
-- Add an approved planned item before QA, if enabled.
-- Set/revise row day, time, order and optional planned executor.
+- Add an approved in-scope planned item before QA; this is enabled in release one.
+- Set/revise row day, time, order and required planned Cutover executor.
 - Publish, revise, cancel or archive according to the future permission policy.
 - Open router details and readiness blockers.
 

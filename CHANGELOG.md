@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- Added a formal, desktop-oriented standalone demo at `prototypes/demo/index.html` with overview, personal work, weekly Cutover planning, Operations queues, router/project records, reminders, management reports and settings. Uses local fictitious data; it is not a production application.
+- Confirmed Commissioning Leader assigns the planned Cutover executor for every router before weekly-plan publication. Other workflow stages keep their own assignments; Operations can record a different actual Cutover executor while preserving both identities and history.
+- Superseded the explored HTML5UP Hyperspace visual direction with a restrained black/white administrative interface.
+
+- Added the missing Persian weekly Cutover text wireframe with board/table layouts, approved pre-QA handling, current versus planned-time ATP readiness, editing proposals, role boundaries and review scenarios. No application implementation is implied.
+
 - Confirmed primary weekly board and synchronized table layout; aligned the approved pre-QA plan flow for the 2026-10-12 publication checkpoint.
 
 - Confirmed pre-QA planned items are active in the first release when they belong to the approved project scope; execution remains gated by QA/Temperature/ATP readiness.
