@@ -10,14 +10,19 @@ Latest clarification: the Cutover plan is Project's primary plan and may precede
 
 Actual Cutover requires full or conditional ATP approval by Second-Line Operations. The schedule displays QA, Temperature and ATP states, with conditional approval visibly distinct. Advance planning of pending routers with execution blocked is accepted. Scheduling does not grant execution permission.
 
+Confirmed execution boundary: ATP must be valid at each attempt's start; expiry during an already validly started attempt does not interrupt it. Successful Cutover stops further pre-Cutover ATP renewal tasks. Failed/replanned attempts recheck validity at their new start. See `ATP-VALIDITY-AND-CUTOVER-READINESS.md`.
+
 ## Scheduling model
 
-The Commissioning Leader creates and manages daily or weekly Cutover plans. A plan is a dated work window containing router rows.
+The Commissioning Leader creates and manages **weekly** Cutover plans. The leader does not create a separate daily plan. A weekly plan contains router rows, each optionally assigned to a specific day and time window within that week.
+
+The user requested clarification of where candidate routers come from. `CUTOVER-PLAN-CREATION-PROPOSAL.md` recommends selecting stable records from the assigned project's router list and, if approved, supporting planned items before QA. Pre-QA item creation, import and related permissions are proposals; do not treat them as implemented or confirmed. Existing routers must not be duplicated merely to add them to a plan.
 
 Recommended plan fields:
 
 - Plan ID and name.
-- Date, start/end window, time zone, and optional maintenance window.
+- Week start/end, time zone, and optional maintenance window.
+- Optional row-level day and start/end time window within the week.
 - Project and province filters.
 - Plan status: Draft, Published, In progress, Completed, Cancelled, Archived.
 - Created/published by and timestamps.
@@ -40,7 +45,7 @@ Recommended router-row fields:
 2. The schedule shows readiness badges for QA, Temperature, and ATP and provides the blocking reason.
 3. Weekly planning may leave the Project executor unassigned. Operations can record or change the actual executor, including last-minute changes, with full attribution and history. Proposal: require actual executor identity before execution is recorded as started.
 4. Operations participant remains variable and is recorded when the row is accepted or started.
-5. Rescheduling creates a new plan-row revision and preserves the previous date, reason, and actor.
+5. Moving a row to another day/time creates a new plan-row revision and preserves the previous date/time, reason, and actor. It does not create a separate daily plan.
 6. The same router cannot be active in two Cutover rows at overlapping times without an authorized exception.
 7. A published plan is a coordination record; it does not approve prerequisites or automatically start a Cutover.
 

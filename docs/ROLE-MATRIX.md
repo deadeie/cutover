@@ -2,6 +2,26 @@
 
 Status: requirements discovery; no permission implementation yet.
 
+## Confirmed leadership access direction
+
+- Operations Leader must have broader access in this system than Project Leader.
+- Confirmed scope: Operations Leader can view reports and workflow status across all projects and provinces. Project Leader can view only assigned projects and manage plans within that responsibility, preserving the existing Installation/Commissioning role split.
+- Preserve existing task ownership and action permissions: Operations Manager defines/approves OM ranges; Operations Leader configures ATP validity; Project leadership manages Cutover plans under its assigned responsibility. System Administrator remains a separate role and Super Admin exceptions remain deferred.
+
+## Leadership access: confirmed scope and remaining details
+
+| Capability | Operations Leader | Project Leader |
+|---|---|---|
+| Reports and workflow visibility | All projects/provinces and relevant queues of both teams | Assigned projects and the status of their Operations reviews |
+| Cutover plans | View all plans and readiness/blockers | Create/manage plans within assigned Project responsibility; preserve separate Installation/Commissioning roles |
+| Operational policies | Existing confirmed inter-stage timing and ATP validity authority; other warning settings to be finalized | Project follow-up settings only where separately authorized; do not transfer Project Manager settings automatically |
+| Follow-up | Operations backlog and Project-side blockers affecting readiness | Project work and returned corrections within assigned scope |
+| Exports and drill-down (proposed implementation detail) | Same authorized row scope as reports | Same authorized row scope as reports |
+
+Global Operations Leader visibility and assigned-project Project Leader visibility/plan management are confirmed. Broader visibility does not automatically permit editing Project plans, performing specialist approvals, overriding prerequisites or approving new ranges. Export availability, the assignment/delegation mechanism and other unspecified permissions remain open.
+
+## Previously confirmed responsibilities
+
 Latest authority corrections: Operations Manager defines/approves new OM ranges with mandatory RSG-group linkage at creation. Operations Leader configures ATP validity duration. ATP expiry informs both Project and Operations Leaders. This supersedes the earlier Project-Leader-configured ATP-to-plan reminder interpretation below. Cutover-plan readiness is Project's concern; approved ATP without a plan is Operations' concern.
 
 Latest 2026-10-11 clarification supersedes conflicting assignments below: System Administrator is a separate role from Operations Manager. Operations Manager AND Operations Leader may configure system-wide inter-stage waits and submission/claim modes for QA, Temperature, ATP and Handover. Project Manager configures reminders for Cutover without a Handover request; Operations Leader configures ATP validity; expiry creates Operations renewal work and informs both leaders. The earlier Project-owned ATP-to-plan deadline is superseded. QA and Temperature inherit the Operations claim/review approach. Submitted tasks concern Operations; returned corrections concern Project. Leadership reminders are a filterable consolidated list. Super Admin exception powers are deferred, not granted. See `SHARED-REQUEST-WORKFLOW.md`.

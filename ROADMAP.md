@@ -4,6 +4,8 @@
 
 Build a modular system for managing and recording the router-onboarding process. The first release will model the workflow, roles, inputs, states, validation, audit history, and reporting. Direct router access or configuration changes remain out of scope until requirements and explicit authorization are approved.
 
+Live network status and continuous network monitoring are excluded from this system. Reports and any later logical graph use recorded process events and configured router/group relationships. Deferred automation-assisted stage checks are a separate capability, not live monitoring.
+
 ## Delivery constraints
 
 - Python 3.11 application baseline.

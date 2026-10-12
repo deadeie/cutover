@@ -13,6 +13,8 @@ Confirmed 2026-10-11. Requirements and extensibility intent only; detailed archi
 
 ## Future capabilities to accommodate
 
+Scope clarification: live network status and continuous monitoring are excluded. The deferred integration below concerns explicit stage checks and recorded results; it does not add a live network dashboard or monitoring service. Operations' external Temperature observation remains part of the business process.
+
 - Add photos, checklist templates/completed checklists and evidence linked to the existing router, stage and review attempt without replacing request identity or history.
 - Integrate the process owner's existing external automation, likely as an early enhancement after initial release.
 - Allow future router connectivity for checks through a separable integration boundary. No router connection, automation execution or configuration mutation is authorized/implemented now.

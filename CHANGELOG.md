@@ -2,6 +2,28 @@
 
 ## Unreleased
 
+- Confirmed primary weekly board and synchronized table layout; aligned the approved pre-QA plan flow for the 2026-10-12 publication checkpoint.
+
+- Confirmed pre-QA planned items are active in the first release when they belong to the approved project scope; execution remains gated by QA/Temperature/ATP readiness.
+- Started UX Phase 2 with an initial contract for personal workspace, weekly Cutover plan, Operations queues, Management dashboard and router detail.
+- Added required personal workspace for each user: ongoing, completed, dependency-waiting, returned-for-correction and upcoming assigned work, with role-aware visibility.
+- Approved weekly Cutover planning for initial implementation: one weekly plan with optional day/time placement per router row; no separate daily Project plans.
+- Confirmed provincial project progress reporting and a leadership personnel workload/performance dashboard; documented proposed metrics and attribution rules separately.
+- Proposed Cutover plan creation from stable project router records, with an optional pre-QA planned-item path pending confirmation; preserved readiness gating at execution.
+- Confirmed Operations Leader global report/status visibility across all projects/provinces and Project Leader visibility/plan management limited to assigned projects; broader viewing does not grant additional editing or override powers.
+
+### Reporting scope and leadership access
+
+- Confirmed live network status/monitoring is out of scope; management reports and proposed logical graphs use recorded workflow and configuration data.
+- Confirmed Operations Leader must have broader access than Project Leader; kept global versus assigned-project visibility and detailed permissions explicitly proposed pending confirmation.
+- Preserved previously assigned action authority and the separate deferred automation-check capability.
+
+### ATP boundaries and management reporting discussion
+
+- Confirmed ATP validity at each Cutover start, uninterrupted active execution on later expiry, no new pre-Cutover renewal tasks after success, and validity recheck for failed/replanned attempts.
+- Confirmed that increasing duration cannot revive expired ATP; its renewal task remains required.
+- Recorded requested management reporting and a separately labeled proposal for report priorities, metrics, exports and later charts/logical RSG graphs.
+
 ### Confirmed ATP renewal and RSG membership checkpoint
 
 - Confirmed blocking Cutover start with expired ATP, automatic Operations renewal tasks, equal validity duration for conditional ATP and recalculation of unexecuted approvals after duration changes.
