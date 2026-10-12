@@ -2,7 +2,7 @@
 
 ## Status
 
-Proposed — awaiting user validation.
+Proposed — production architecture awaits validation. A native Windows/SQLite local flow slice is implemented only for process evaluation; it does not change the target RHEL 8/offline delivery requirements or choose the production database.
 
 ## Context
 
@@ -19,6 +19,7 @@ Use a modular monolith for the first release. Package the application and its ru
 - Native dependencies must be built and tested against the target Linux architecture.
 - The repository must separate source, migrations, configuration templates, tests, build scripts, and operations documentation.
 - Secrets and environment-specific credentials stay outside Git and outside the transfer bundle.
+- The local evaluation app uses a standard-library HTTP host and SQLite adapter behind a separate workflow module. Preserve this separation while the process is refined; validate the database adapter/migrations, authentication, and RHEL packaging in their own later design/release steps.
 
 ## Rejected for now
 

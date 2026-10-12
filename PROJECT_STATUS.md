@@ -2,7 +2,7 @@
 
 ## Current phase
 
-Phase 1: process discovery and confirmed requirements. No application, database migration or container has been implemented or runtime-tested. Read docs/RESUME-HERE.md first; detailed current requirements under docs/ supersede historical proposals and root-level duplicate foundation documents.
+Phase 1 process discovery is ongoing. A first native Windows local workflow slice now exists for flow evaluation, with a local SQLite file and standard-library Python HTTP server. It is not a production application or a validated RHEL deployment. Read docs/RESUME-HERE.md first; detailed current requirements under docs/ supersede historical proposals and root-level duplicate foundation documents.
 
 UX Phase 2 has an initial contract, a Persian weekly-plan wireframe and a standalone desktop demo at `prototypes/demo/index.html`. The demo uses fictitious local data and is not the application implementation. No database migration, backend or container has been implemented or runtime-tested.
 
@@ -43,4 +43,13 @@ UX Phase 2 has an initial contract, a Persian weekly-plan wireframe and a standa
 
 ## Validation and publication
 
-This checkpoint contains requirements documents and a local interactive UX demo only; no production application, database or container exists. Check Git status and origin/main to establish publication state.
+## Local executable flow slice (2026-10-12)
+
+- `application/` is a runnable, dependency-free local Python web application at `http://127.0.0.1:8765`; launch with `run-local.ps1` from the repository root.
+- Persistent local SQLite data is written to `application/data/cutover.sqlite3` and ignored by Git. SQLite is a local evaluation adapter only; production database selection and migrations remain open.
+- The slice supports router records, separate QA/TEMP/ATP/Handover requests, Operations claim/review/return, correction resubmission, weekly Cutover rows, optional planned executor, actual executor/result and event history.
+- Tested gates: TEMP may be claimed before its observation ends but cannot be approved early; Cutover is blocked until QA/TEMP/ATP approval and valid ATP; successful execution time anchors Handover eligibility.
+- This is not secure multi-user software: role choice is a UI simulation, authentication/authorization is absent, and router naming/IP range validation, full reminder/report functions, and several correction/renewal details are incomplete. Do not use it for live network operations or production data.
+- `py -3 -m unittest discover -s tests -v` currently passes the local workflow tests.
+
+Target RHEL 8/container delivery remains a later packaging phase. Keep process rules separated from HTTP and the SQLite adapter to reduce transition rework; validate behavior with the user before choosing and implementing the production runtime/database.

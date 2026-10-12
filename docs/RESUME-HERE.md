@@ -1,6 +1,6 @@
 # Resume checkpoint
 
-Requirements discovery only. No application or container has been built or tested. Latest user clarifications take precedence over historical proposals in older documents.
+Requirements discovery remains ongoing. A native local flow slice was added on 2026-10-12 for user evaluation; no production system or container has been built. Latest user clarifications take precedence over historical proposals in older documents.
 
 ## Current source of truth
 
@@ -36,6 +36,15 @@ Personal reminders target the responsible person. Relevant leaders/managers have
 - Set ATP validity and readiness-reminder defaults and exact renewal-check scope; execution/expiry boundaries and the no-revival exception are confirmed.
 - Remaining timing details: stage-specific mode configuration, mode changes for waiting requests, correction/continuation warning timers and observation-duration changes during a Temperature run.
 - Detailed checklists and automated checks are not blockers for initial-release event recording.
+
+## Runnable local flow slice
+
+- Start from the `cutover` repository folder with `./run-local.ps1` in PowerShell or `py -3 -m application`; open `http://127.0.0.1:8765`.
+- The application uses built-in Python HTTP and SQLite modules. Local data is saved under `application/data/`; the database file is ignored by Git. This is not the later RHEL 8/container runtime or a production database choice.
+- Test the stage request and Operations claim/review flow, TEMP observation gate, correction return/resubmission, weekly Cutover planning with optional planned executor, actual executor recording, and Handover delay. Settings let the operator shorten test intervals.
+- The seeded routers are fictional. The role picker is only for visual flow testing; API authentication and authorization do not exist yet. Do not enter production-sensitive records.
+- Automated local checks: `py -3 -m unittest discover -s tests -v`.
+- Known incomplete rules: full role enforcement, system-wide inter-stage block/wait modes, ATP validity-change recalculation semantics, approved range/name/IP validation, management reminders/reports, detailed conditional approvals, evidence and revision handling. Review these against confirmed docs during hands-on Flow evaluation before treating the slice as accepted.
 
 ## Repository note
 
