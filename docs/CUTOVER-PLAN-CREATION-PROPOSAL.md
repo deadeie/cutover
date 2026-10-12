@@ -7,7 +7,7 @@ Status: user approved this approach for initial implementation and wants its pra
 - A Project has an intended router scope; Design defines rollout projects, with the detailed manager/specialist approval split still open.
 - Commissioning Leader manages weekly Cutover plans for assigned projects. A weekly plan contains dated rows and optional daily/time-window placement; the leader does not create a separate daily plan. Planning may precede Temperature/ATP readiness; current prerequisites gate execution, not membership in a plan.
 - QA may have only site code and center; the canonical name is assigned at Temperature. Multiple routers at one site have separate identities.
-- Every router in a weekly plan needs a planned Cutover executor assigned by the Commissioning Leader before publication. Operations records the actual executor, which may differ; the plan assignment and execution record remain separately attributable.
+- The Commissioning Leader may assign a planned Cutover executor to a weekly-plan row, or leave it unassigned. Operations records the actual executor when work occurs; this may differ from the planned person, and both remain separately attributable. A missing planned executor does not block publication.
 
 ## Recommended source of plan rows
 
@@ -19,7 +19,7 @@ Proposed initial planned-item fields: project, province, center, site code if kn
 
 1. Leader selects an assigned project and creates a weekly plan with its week, timezone and optional daily/time-window placement for each row.
 2. Choose Add from project router list. Filter by province, center, topology and progress; show QA/Temperature/ATP readiness and current/planned ATP validity next to each item.
-3. Select rows, set their planned time/order and assign the planned Cutover executor for every router. The Commissioning Leader must complete this assignment before publishing. Pending readiness is visible but does not prevent planning.
+3. Select rows and set their planned time/order. Optionally assign a planned Cutover executor to each row. Pending readiness or an unassigned executor remains visible but does not prevent planning or publication.
 4. If a router is missing, use a governed Add planned item flow, or request its addition from the project-scope owner. Do not silently create a duplicate actual router from free-text plan entry. Role authority and optional bulk import remain open.
 5. Save/publish the weekly plan under the future publication policy. Track readiness and reminders against each row's planned date/time. Publishing does not approve prerequisites or automatically submit QA/Temperature/ATP. Changing a row's day or time creates a revision/history entry; it does not create a new plan.
 6. When QA begins, reference the selected planned item and create its QA request while retaining the same identity; later Temperature assigns its canonical name. This approved approach supersedes earlier assumptions that QA always creates a new item. Existing QA records are linked/selected, not recreated.

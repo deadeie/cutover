@@ -3,8 +3,9 @@
 ## Unreleased
 
 - Added a formal, desktop-oriented standalone demo at `prototypes/demo/index.html` with overview, personal work, weekly Cutover planning, Operations queues, router/project records, reminders, management reports and settings. Uses local fictitious data; it is not a production application.
-- Confirmed Commissioning Leader assigns the planned Cutover executor for every router before weekly-plan publication. Other workflow stages keep their own assignments; Operations can record a different actual Cutover executor while preserving both identities and history.
+- Confirmed the planned Cutover executor is optional on each weekly-plan row. Other workflow stages keep their own assignments; Operations can record a different actual Cutover executor while preserving both identities and history.
 - Superseded the explored HTML5UP Hyperspace visual direction with a restrained black/white administrative interface.
+- Made Project request creation visible in the demo: add/select an in-scope router record, submit its next eligible stage request, and see the resulting task in the Operations queue. Added seeded examples for QA, TEMP, ATP renewal and Handover paths.
 
 - Added the missing Persian weekly Cutover text wireframe with board/table layouts, approved pre-QA handling, current versus planned-time ATP readiness, editing proposals, role boundaries and review scenarios. No application implementation is implied.
 

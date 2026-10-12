@@ -50,7 +50,7 @@ See `UX-WEEKLY-CUTOVER-WIREFRAME.md` for the Persian text wireframe, shared boar
 
 ### Row table/board
 
-Each row displays project router identity, province/site, optional topology/A-B, planned day/time, planned Cutover executor, Operations participant, QA/Temperature/ATP badges, ATP valid-until and readiness blocker. The Commissioning Leader assigns a planned executor to every router before publishing; this assignment is only for Cutover. QA, Temperature, ATP and Handover responsibility follows its independent task assignment/claim flow. Operations records the actual Cutover executor and may record a different person while retaining the planned assignment.
+Each row displays project router identity, province/site, optional topology/A-B, planned day/time, optional planned Cutover executor, Operations participant, QA/Temperature/ATP badges, ATP valid-until and readiness blocker. The Commissioning Leader may set or omit the planned executor; an unassigned row does not block publishing. This assignment is only for Cutover. QA, Temperature, ATP and Handover responsibility follows its independent task assignment/claim flow. Operations records the actual Cutover executor and may record a different person while retaining the planned assignment.
 
 The leader selects existing project router records. A pre-QA planned item may be selected only if the approved project-scope workflow supports it; adding a new router outside project scope requires separate approval. Do not create duplicate router records when QA or the canonical name is later recorded.
 
@@ -58,7 +58,7 @@ The leader selects existing project router records. A pre-QA planned item may be
 
 - Add from project router list.
 - Add an approved in-scope planned item before QA; this is enabled in release one.
-- Set/revise row day, time, order and required planned Cutover executor.
+- Set/revise row day, time, order and optional planned Cutover executor.
 - Publish, revise, cancel or archive according to the future permission policy.
 - Open router details and readiness blockers.
 
@@ -67,6 +67,10 @@ Publishing never approves QA/Temperature/ATP or starts Cutover. Before execution
 ## Page 3 — Operations queues
 
 Operations users see separate tabs or saved filters for QA, Temperature, ATP, Handover and ATP renewal. Each request is a complete task card/row, not a hidden substep of a Project screen.
+
+### Project stage-request entry
+
+Project users first create/select a router record inside the approved project scope, then open **Register stage request** for that record. The form offers only the next eligible request: QA after installation is reported; Temperature after QA approval; ATP after Temperature approval; Handover after successful Cutover and its configured wait. Submission creates a stage-specific Operations task linked to the same router record and opens that queue item. Pending requests are followed in their existing task instead of duplicated. This flow is shown in the local demo.
 
 ### Queue row
 

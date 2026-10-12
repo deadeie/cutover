@@ -1,6 +1,16 @@
 # Shared request workflow — QA, Temperature, ATP and Handover
 
-Process-owner clarification, 2026-10-11. Confirmed requirements are separated from proposals and open questions. This document supersedes conflicting earlier workflow and timing proposals. Discovery only; no application code has been built.
+Process-owner clarification, 2026-10-11. Confirmed requirements are separated from proposals and open questions. This document supersedes conflicting earlier workflow and timing proposals. A local demo illustrates the workflow; no production application code has been built.
+
+## Creating stage requests from a Project router record
+
+- First create or select one router/work item inside the approved Project scope. That record is the shared identity used across QA, Temperature, ATP, Cutover and Handover; stage requests do not create duplicate router records.
+- Once installation is reported complete, a Project user submits a QA request against that record with the site/center/topology details. Operations receives a separate QA task in its queue.
+- After QA approval, the Project user submits the Temperature request on the same record. The canonical router name and OM IP are completed as required for that stage; Operations receives a separate Temperature task.
+- After Temperature approval, the Project user submits ATP on the same record; it becomes a separate Operations task. An expired ATP is re-confirmed through the Operations renewal/review flow.
+- After successful Cutover and the configured wait, Project submits Handover on the same record. The request is routed to the Handover Operations queue.
+- The request form shows only the next stage whose prerequisites are met. An already submitted/pending request is followed in its existing queue item; duplicate active requests are not created.
+- The planned Cutover executor in a weekly plan is independent from these stage requests and is optional. Assignment of QA, Temperature, ATP and Handover work follows their own Operations assignment/claim process.
 
 ## Confirmed task lifecycle
 

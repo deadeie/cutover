@@ -43,7 +43,7 @@ Latest 2026-10-11 clarification supersedes conflicting assignments below: System
 | Correct Temperature problems | Project Team and the original requesting specialist | Escalation |
 | ATP submission | Project Commissioning Specialist | Checklist |
 | ATP claim, review and decision | One Second-Line Operations Specialist | Reassignment and resubmission rules |
-| Cutover planning | Commissioning Leader creates the weekly plan and assigns a planned Cutover executor for every router before publication | Window and publication rules |
+| Cutover planning | Commissioning Leader creates the weekly plan and may assign a planned Cutover executor to each router; assignment is optional | Window and publication rules |
 | Cutover pre-check | First-Line or Second-Line Operations confirms ATP readiness | Exact checklist |
 | Cutover execution | Planned Project person performs with Operations; actual executor may be a different person and is recorded by Operations with the planned assignment preserved | Detailed checks |
 | Cutover post-check | First-Line or Second-Line Operations checks result | Manual/automation criteria |
