@@ -13,7 +13,9 @@ def act(data):
         if kind=="router.create":
             required=["project","province","site","center","topology"]
             if any(not str(data.get(k,"")).strip() for k in required): raise ValueError("فیلدهای پروژه، استان، کد سایت، مرکز و توپولوژی الزامی‌اند.")
-            if db.execute("SELECT 1 FROM routers WHERE province=? AND site=?",(data["province"],data["site"])).fetchone(): raise ValueError("این کد سایت در این استان قبلاً ثبت شده است.")
+            siblings=db.execute("SELECT id FROM routers WHERE UPPER(province)=UPPER(?) AND UPPER(site)=UPPER(?)",(data["province"].strip(),data["site"].strip())).fetchall()
+            if siblings and not data.get("duplicate_site_confirmed"):
+                raise ValueError("برای این کد سایت قبلاً روتر ثبت شده؛ اگر روتر دوم همین مرکز است، ثبت جداگانه را تأیید کنید.")
             cur=db.execute("INSERT INTO routers(project,province,site,center,topology,name,om_ip,installed_at,created_at) VALUES(?,?,?,?,?,?,?,?,?)",(data["project"].strip(),data["province"].upper(),data["site"].upper(),data["center"].strip(),data["topology"],data.get("name","").upper(),data.get("om_ip","").strip(),store.now(),store.now()))
             store.event(db,cur.lastrowid,None,actor,"ثبت روتر",data["site"])
         elif kind=="request.create":
@@ -21,6 +23,14 @@ def act(data):
             if stage not in STAGES: raise ValueError("مرحله نامعتبر است.")
             r=db.execute("SELECT * FROM routers WHERE id=?",(rid,)).fetchone()
             if not r: raise ValueError("روتر پیدا نشد.")
+            if stage=="QA":
+                prior=db.execute("SELECT 1 FROM requests WHERE router_id=? AND stage='QA'",(rid,)).fetchone()
+                if prior:
+                    raise ValueError("برای این رکورد روتر قبلاً QA ثبت شده است. اگر QA برگشت خورده، همان درخواست را پس از اصلاح دوباره ارسال کنید؛ برای روتر دوم، رکورد جدا بسازید.")
+                peer=db.execute("SELECT 1 FROM routers WHERE province=? AND site=? AND topology=? AND id<>?",(r["province"],r["site"],r["topology"],rid)).fetchone()
+                if peer and data.get("plane") not in ("A","B"):
+                    raise ValueError("برای روتر دوم هم‌توپولوژی در همین سایت، هنگام QA مشخص کنید روتر A است یا B.")
+            plane=data.get("plane","") if stage=="QA" else ""
             approved={x[0] for x in db.execute("SELECT stage FROM requests WHERE router_id=? AND state IN ('Approved','Conditional')",(rid,))}
             prereq={"QA":set(),"TEMP":{"QA"},"ATP":{"QA","TEMP"},"HANDOVER":{"QA","TEMP","ATP"}}[stage]
             if not prereq.issubset(approved): raise ValueError("پیش‌نیازهای این مرحله هنوز تأیید نشده‌اند.")
@@ -32,8 +42,8 @@ def act(data):
                 completed=db.execute("SELECT execution_at FROM plans WHERE router_id=? AND state='Completed' ORDER BY id DESC LIMIT 1",(rid,)).fetchone()
                 if not completed[0] or datetime.fromisoformat(completed[0]) + timedelta(hours=hours)>datetime.now(timezone.utc): raise ValueError(f"مهلت انتظار Handover هنوز تمام نشده است ({hours} ساعت).")
             if db.execute("SELECT 1 FROM requests WHERE router_id=? AND stage=? AND state IN ('Queued','Claimed','Correction')",(rid,stage)).fetchone(): raise ValueError("برای این مرحله درخواست فعال وجود دارد.")
-            cur=db.execute("INSERT INTO requests(router_id,stage,state,created_at,submitted_by,note) VALUES(?,?,?,?,?,?)",(rid,stage,"Queued",store.now(),actor,data.get("note","")[:500]))
-            store.event(db,rid,cur.lastrowid,actor,"ثبت درخواست",LABELS[stage])
+            cur=db.execute("INSERT INTO requests(router_id,stage,state,created_at,submitted_by,note,plane) VALUES(?,?,?,?,?,?,?)",(rid,stage,"Queued",store.now(),actor,data.get("note","")[:500],plane))
+            store.event(db,rid,cur.lastrowid,actor,"ثبت درخواست",f"{LABELS[stage]}{f' · روتر {plane}' if plane else ''}")
         elif kind in ("request.claim","request.approve","request.return"):
             qid=int(data["request_id"]); q=db.execute("SELECT * FROM requests WHERE id=?",(qid,)).fetchone()
             if not q: raise ValueError("درخواست پیدا نشد.")

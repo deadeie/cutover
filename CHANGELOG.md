@@ -6,6 +6,7 @@
 - Implemented router records, separate QA/TEMP/ATP/Handover requests, Operations claim/review/correction return and resubmission, weekly Cutover planning with optional planned executor, distinct actual executor and recorded success, and event history.
 - Enforced the TEMP observation approval gate, Cutover prerequisite/ATP-validity gate with Operations ATP renewal task, and Handover elapsed time from successful Cutover. Added local timing settings and workflow tests.
 - Documented local launch and architecture limits; role selection is simulated, production authentication/database/packaging remain unimplemented, and no live-network action is performed.
+- Fixed duplicate QA submission on an already-QA'd router while allowing a separately confirmed second router at the same site; same-topology second-router QA requires explicit A/B identification.
 
 - Added a formal, desktop-oriented standalone demo at `prototypes/demo/index.html` with overview, personal work, weekly Cutover planning, Operations queues, router/project records, reminders, management reports and settings. Uses local fictitious data; it is not a production application.
 - Confirmed the planned Cutover executor is optional on each weekly-plan row. Other workflow stages keep their own assignments; Operations can record a different actual Cutover executor while preserving both identities and history.

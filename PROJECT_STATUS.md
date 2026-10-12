@@ -49,6 +49,7 @@ UX Phase 2 has an initial contract, a Persian weekly-plan wireframe and a standa
 - Persistent local SQLite data is written to `application/data/cutover.sqlite3` and ignored by Git. SQLite is a local evaluation adapter only; production database selection and migrations remain open.
 - The slice supports router records, separate QA/TEMP/ATP/Handover requests, Operations claim/review/return, correction resubmission, weekly Cutover rows, optional planned executor, actual executor/result and event history.
 - Tested gates: TEMP may be claimed before its observation ends but cannot be approved early; Cutover is blocked until QA/TEMP/ATP approval and valid ATP; successful execution time anchors Handover eligibility.
+- QA is limited to one initial request per router record; correction uses the same returned request. A second physical router at the same site is a separate record, with A/B identified for same-topology QA.
 - This is not secure multi-user software: role choice is a UI simulation, authentication/authorization is absent, and router naming/IP range validation, full reminder/report functions, and several correction/renewal details are incomplete. Do not use it for live network operations or production data.
 - `py -3 -m unittest discover -s tests -v` currently passes the local workflow tests.
 

@@ -1,10 +1,8 @@
 """SQLite local persistence adapter. Domain rules live in workflow.py."""
-import json
 import os
 import sqlite3
 from contextlib import contextmanager
 from datetime import datetime, timedelta, timezone
-from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -44,7 +42,7 @@ def init():
           id INTEGER PRIMARY KEY, router_id INTEGER NOT NULL REFERENCES routers(id),
           stage TEXT NOT NULL, state TEXT NOT NULL, created_at TEXT NOT NULL,
           claimed_by TEXT DEFAULT '', claimed_at TEXT DEFAULT '', submitted_by TEXT NOT NULL,
-          note TEXT DEFAULT ''
+          note TEXT DEFAULT '', plane TEXT DEFAULT ''
         );
         CREATE TABLE IF NOT EXISTS events(
           id INTEGER PRIMARY KEY, router_id INTEGER, request_id INTEGER,
@@ -58,6 +56,10 @@ def init():
         );
         CREATE TABLE IF NOT EXISTS settings(key TEXT PRIMARY KEY, value TEXT NOT NULL);
         """)
+        # Upgrade a local database created by an earlier demo build.
+        request_columns={row[1] for row in db.execute("PRAGMA table_info(requests)")}
+        if "plane" not in request_columns:
+            db.execute("ALTER TABLE requests ADD COLUMN plane TEXT DEFAULT ''")
         for key, value in {"temp_observation_hours":"48", "handover_wait_hours":"48", "atp_validity_days":"30"}.items():
             db.execute("INSERT OR IGNORE INTO settings(key,value) VALUES(?,?)", (key,value))
         if db.execute("SELECT COUNT(*) FROM routers").fetchone()[0] == 0:
