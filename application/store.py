@@ -87,6 +87,7 @@ def event(db, router_id, request_id, actor, action, detail):
 
 def state():
     with connect() as db:
+        db.execute("BEGIN IMMEDIATE")
         # Materialize the confirmed ATP renewal task when an uncut router's
         # latest approval has expired. Refreshing the local app reevaluates it.
         validity=int(db.execute("SELECT value FROM settings WHERE key='atp_validity_days'").fetchone()[0])

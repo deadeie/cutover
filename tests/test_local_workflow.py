@@ -90,8 +90,60 @@ class LocalWorkflowTest(unittest.TestCase):
         second=self.fresh_router_id()
         with self.assertRaisesRegex(ValueError, "مشخص کنید روتر A است یا B"):
             self.act("request.create", router_id=second, stage="QA")
-        result=self.act("request.create", router_id=second, stage="QA", plane="B")
+        with self.assertRaisesRegex(ValueError, "روتر اول"):
+            self.act("request.create", router_id=second, stage="QA", plane="B")
+        result=self.act("request.create", router_id=second, stage="QA", plane="B", peer_plane="A")
         self.assertTrue(any(q["router_id"]==second and q["plane"]=="B" for q in result["requests"]))
+
+    def test_simultaneous_qa_submission_creates_one_request(self):
+        from concurrent.futures import ThreadPoolExecutor
+        rid=self.fresh_router_id()
+        def submit(_):
+            try:
+                self.act("request.create", router_id=rid, stage="QA")
+                return True
+            except ValueError:
+                return False
+        with ThreadPoolExecutor(max_workers=4) as pool:
+            results=list(pool.map(submit, range(4)))
+        self.assertEqual(sum(results),1)
+        self.assertEqual(len([q for q in store.state()["requests"] if q["router_id"]==rid]),1)
+
+    def test_correction_preserves_request_identity_creation_and_history(self):
+        rid=self.fresh_router_id()
+        self.act("request.create",router_id=rid,stage="QA")
+        qid=self.newest_request("QA")
+        self.act("request.claim",request_id=qid)
+        with self.assertRaises(ValueError):
+            self.act("request.return",request_id=qid,note="  ")
+        self.act("request.return",request_id=qid,note="اصلاح نصب")
+        before=next(q for q in store.state()["requests"] if q["id"]==qid)
+        with self.assertRaises(ValueError):
+            self.act("request.create",router_id=rid,stage="QA")
+        with self.assertRaises(ValueError):
+            self.act("request.resubmit",request_id=qid)
+        self.act("request.resubmit",request_id=qid,note="نصب اصلاح شد")
+        after=next(q for q in store.state()["requests"] if q["id"]==qid)
+        self.assertEqual(after["created_at"],before["created_at"])
+        self.assertEqual(after["state"],"Queued")
+        self.assertEqual(after["claimed_by"],"")
+        self.approve(qid)
+        with self.assertRaises(ValueError):
+            self.act("request.resubmit",request_id=qid,note="تکرار")
+
+    def test_site_formats_normalization_and_duplicate_confirmation(self):
+        details=dict(project="نمونه",province=" gl ",site=" glx012 ",center="مرکز",topology="asg")
+        self.act("router.create",**details)
+        r=next(r for r in store.state()["routers"] if r["site"]=="GLX012")
+        self.assertEqual(r["province"],"GL")
+        with self.assertRaises(ValueError):
+            self.act("router.create",**details,duplicate_site_confirmed="false")
+        details["site"]="GL0012"
+        self.act("router.create",**details)
+        for invalid in ("GL012", "GLXX12", "TH0012"):
+            details["site"]=invalid
+            with self.assertRaises(ValueError):
+                self.act("router.create",**details)
 
 
 if __name__ == "__main__":

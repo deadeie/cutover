@@ -1,5 +1,7 @@
 # Resume checkpoint
 
+Latest stabilization: read `LOCAL-STABILIZATION.md`. QA correction, same-site identity and concurrent submission controls have improved; existing historical duplicates remain intact. This is still an incomplete evaluation application.
+
 Requirements discovery remains ongoing. A native local flow slice was added on 2026-10-12 for user evaluation; no production system or container has been built. Latest user clarifications take precedence over historical proposals in older documents.
 
 ## Current source of truth

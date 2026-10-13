@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Stabilized local QA submission/correction and same-site identity; serialized mutation checks, validated site formats, required explicit first-router plane confirmation, and corrected request-form selection/eligibility. Seven workflow scenarios and browser checks cover this bounded increment. See `docs/LOCAL-STABILIZATION.md` for remaining gaps and historical duplicate data.
+
 - Added a dependency-free, native Windows local workflow application under `application/`, backed by a local SQLite adapter so the user can evaluate persistent end-to-end process flow before the later RHEL/container packaging phase.
 - Implemented router records, separate QA/TEMP/ATP/Handover requests, Operations claim/review/correction return and resubmission, weekly Cutover planning with optional planned executor, distinct actual executor and recorded success, and event history.
 - Enforced the TEMP observation approval gate, Cutover prerequisite/ATP-validity gate with Operations ATP renewal task, and Handover elapsed time from successful Cutover. Added local timing settings and workflow tests.
