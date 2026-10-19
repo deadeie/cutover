@@ -1,5 +1,9 @@
 # Project status
 
+Latest requirements update: `docs/PROJECT-TARGETS-AND-REPLACEMENT.md` and the revised `docs/DATA-MODEL-PROPOSAL.md` cover numerical targets with permitted excess, mutable province codes with stable identity, new-RSG reference requests, Replace/Dismantle, explicit TEMP return modes and 06:00/24-hour Cutover alerts. These are documented, not yet implemented; conflicting earlier baseline/site-scope statements below are superseded.
+
+Confirmed on 2026-10-19: project targets are stored per province; progress counts successful Handover, including Replace routers as one target unit, with display capped at 100% and excess shown separately. Dismantle is a separate post-Handover Operations record. System Administrator alone registers/activates province codes, RSG groups and ranges. ATP validity starts at the approval timestamp and defaults to seven calendar days. Cutover warning review runs at 06:00 for the next 24 hours and reruns immediately after a plan change; the System Administrator controls its enabled state and window. Province-code changes update current display while preserving previous codes for history/search.
+
 ## Current phase
 
 Phase 1 process discovery is ongoing. A first native Windows local workflow slice now exists for flow evaluation, with a local SQLite file and standard-library Python HTTP server. It is not a production application or a validated RHEL deployment. Read docs/RESUME-HERE.md first; detailed current requirements under docs/ supersede historical proposals and root-level duplicate foundation documents.

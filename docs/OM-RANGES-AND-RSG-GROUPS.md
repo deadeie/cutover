@@ -1,5 +1,7 @@
 # OM ranges and RSG groups
 
+2026-10-13: user assigns province/reference administration and new RSG/group-range registration to System Administrator, with automatic reference-data requests from a Project Leader's new-RSG onboarding. Whether Operations Manager approval remains as a separate step is now an explicit clarification question; do not silently implement both or retain the older sole authority below. See PROJECT-TARGETS-AND-REPLACEMENT.md.
+
 Requirements discovery. The process owner approved the range-request/approval flow, Operations Manager authority and mandatory group linkage at initial range definition. The process owner also confirmed that the first RSG occupies its A/B position in the pair and the second completes the same group; this records relationships only and does not modify the network. No networking or database implementation is included.
 
 ## Confirmed requirements

@@ -1,5 +1,7 @@
 # Cutover plan creation proposal
 
+2026-10-13: the project baseline is numerical targets, provinces and a time range, not an approved site list. Project may add above-target routers without current Design approval; excess is reported separately. Site-specific Design requirements and subsequent approval are future extensions only. See PROJECT-TARGETS-AND-REPLACEMENT.md; this supersedes conflicting scope-approval proposals below.
+
 Status: user approved this approach for initial implementation and wants its practical issues discovered during use. Pre-QA planned items are active in the first release when they belong to the approved project scope. The Commissioning Leader creates weekly Cutover plans; daily planning is not a Project-leader activity. Keep the confirmed distinction between the rollout project defined by Design and the weekly Cutover plan managed by the Commissioning Leader.
 
 ## Existing confirmed context

@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Documented numerical project targets and permitted excess, deferred optional site-level Design requirements, province-code changes, System Administrator new-RSG registration requests (approval authority clarification pending), replacement/Dismantle history, explicit TEMP return modes, and configurable 06:00/24-hour Cutover warnings. Updated proposed schema; no application migration or implementation in this documentation increment.
+- Confirmed per-province project targets, Handover as the progress denominator, Replace as one target unit with separate Dismantle tracking, System Administrator-only range registration, seven-day ATP validity, and immediate re-evaluation of the 06:00/24-hour Cutover warning when the plan changes.
+- Confirmed progress display capped at 100% with excess reported separately, Replace counted within the original target capacity, and province-code changes reflected in current values while preserving searchable history.
+
 - Stabilized local QA submission/correction and same-site identity; serialized mutation checks, validated site formats, required explicit first-router plane confirmation, and corrected request-form selection/eligibility. Seven workflow scenarios and browser checks cover this bounded increment. See `docs/LOCAL-STABILIZATION.md` for remaining gaps and historical duplicate data.
 
 - Added a dependency-free, native Windows local workflow application under `application/`, backed by a local SQLite adapter so the user can evaluate persistent end-to-end process flow before the later RHEL/container packaging phase.

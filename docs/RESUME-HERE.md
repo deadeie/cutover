@@ -1,5 +1,9 @@
 # Resume checkpoint
 
+Latest business clarification (2026-10-13): `PROJECT-TARGETS-AND-REPLACEMENT.md` supersedes conflicting scope, TEMP return, reference-data ownership and warning proposals below. Design supplies numerical router/province/time targets; exceeding counts is allowed and reported, with no current site-approval flow. Replacement onboarding adds Operations-recorded Dismantle after Handover. Revised proposed schema: `DATA-MODEL-PROPOSAL.md`. These new requirements are not implemented.
+
+2026-10-19 decisions: targets are per province; Handover is the progress completion point and Replace counts as one target unit. Displayed progress is capped at 100%, with excess reported separately; Dismantle is separate. System Administrator alone registers ranges/groups/province codes. ATP validity is seven calendar days from approval timestamp. Cutover warnings run at 06:00 for the next 24 hours and rerun immediately after an intra-day plan change. Province-code changes update current values while retaining old values in history/search.
+
 Latest stabilization: read `LOCAL-STABILIZATION.md`. QA correction, same-site identity and concurrent submission controls have improved; existing historical duplicates remain intact. This is still an incomplete evaluation application.
 
 Requirements discovery remains ongoing. A native local flow slice was added on 2026-10-12 for user evaluation; no production system or container has been built. Latest user clarifications take precedence over historical proposals in older documents.

@@ -1,5 +1,7 @@
 # Temperature — confirmed requirements and open decisions
 
+2026-10-13 superseding clarification: Operations explicitly chooses REOBSERVE or CORRECTION_ONLY on return, independently of the reason category. REOBSERVE begins a full new run at resubmission using the then-current duration. CORRECTION_ONLY permits approval after correction without a time gate. Running observation durations retain their original configured value. Older category-driven return rules below are superseded; see PROJECT-TARGETS-AND-REPLACEMENT.md. This update is not yet implemented.
+
 This document supersedes the incomplete Temperature draft where they differ. Status: discovery, not implemented.
 
 Time intervals are configurable; System Administrator is distinct from Operations Manager/Leader. Workflow timing authority is recorded in `SHARED-REQUEST-WORKFLOW.md`. The 48-hour observation references are the recorded baseline; effects of policy changes on existing/repeated observation runs remain open. See `ADMIN-POLICIES-AND-DEPLOYMENT.md`.
